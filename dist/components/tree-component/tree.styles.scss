@@ -1,0 +1,20 @@
+.nodeBox {
+  border-radius: 4px;
+  background-color: #f7f8f9;
+  border-color: #f7f8f9;
+  border-style: solid;
+  border-width: 1px;
+  position: absolute;
+  display: flex;
+  align-items: center;
+}
+
+.root {
+  position: relative;
+}
+
+.defaultconnectingLine {
+  fill: none;
+  stroke-width: 1;
+  stroke: rgb(231, 233, 235);
+}

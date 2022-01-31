@@ -1,0 +1,24 @@
+{
+  "name": "treeflex",
+  "version": "1.0.0",
+  "description": "Tree builder, with a lot of options",
+  "main": "dist/index.js",
+  "devDependencies": {
+    "@types/react": "^17.0.38",
+    "@types/react-dom": "^17.0.11",
+    "css-loader": "^6.5.1",
+    "react": "^17.0.2", 
+    "react-dom": "^17.0.2",
+    "style-loader": "^3.3.1",
+    "typescript": "^4.5.4",
+    "webpack": "^5.67.0"
+  },
+  "scripts": {
+    "build": "tsc && cp src/components/tree-component/tree.styles.css dist/components/tree-component && cp src/components/box-content-component/box.content.styles.css dist/components/box-content-component"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-sass": "^7.0.1"
+  }
+}

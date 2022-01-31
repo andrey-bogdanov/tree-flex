@@ -1,0 +1,13 @@
+{
+  "include": [
+    "src"
+  ],
+  "compilerOptions": {
+    "outDir": "dist",
+    "jsx": "react",
+    "target": "ES5",
+    "lib": ["ES2015"],
+    "declaration": true,
+    "module": "commonjs"
+  }
+}
