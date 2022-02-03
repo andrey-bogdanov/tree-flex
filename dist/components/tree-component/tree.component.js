@@ -106,7 +106,7 @@ var Tree = /** @class */ (function (_super) {
         pathShape: pathShapes_1.default.bezier,
         nodeWidth: 100,
         nodeHeight: 50,
-        lineClassName: "defaultconnectingLine",
+        lineClassName: "connectingLine",
         xOffset: 50,
         yOffset: 50,
     };

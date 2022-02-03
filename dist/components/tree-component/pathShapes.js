@@ -6,7 +6,7 @@ function bezier(x1, y1, x2, y2) {
 }
 exports.bezier = bezier;
 function roundedAngles(x1, y1, x8, y8, radius) {
-    if (radius === void 0) { radius = 6; }
+    if (radius === void 0) { radius = 20; }
     var x3 = (x8 + x1) / 2;
     var y3 = y1;
     var x2 = x3 - radius * Math.sign(x8 - x1);

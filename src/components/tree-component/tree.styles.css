@@ -13,7 +13,7 @@
   position: relative;
 }
 
-.defaultconnectingLine {
+.connectingLine {
   fill: none;
   stroke-width: 1;
   stroke: rgb(231, 233, 235);

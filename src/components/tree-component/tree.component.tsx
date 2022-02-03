@@ -115,7 +115,7 @@ export class Tree extends React.Component<TreeProps> {
     pathShape: pathShapes.bezier,
     nodeWidth: 100,
     nodeHeight: 50,
-    lineClassName: "defaultconnectingLine",
+    lineClassName: "connectingLine",
     xOffset: 50,
     yOffset: 50,
   };

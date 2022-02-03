@@ -4,7 +4,7 @@ export function bezier(x1: number, y1: number, x2: number, y2: number): string {
   return `M${x1} ${y1} C${(x1 + x2) / 2},${y1} ${(x1 + x2) / 2},${y2} ${x2},${y2}`;
 }
 
-export function roundedAngles(x1: number, y1: number, x8: number, y8: number, radius: number = 6): string {
+export function roundedAngles(x1: number, y1: number, x8: number, y8: number, radius: number = 20 ): string {
   const x3: number = (x8 + x1) / 2;
   const y3: number = y1;
   const x2: number = x3 - radius * Math.sign(x8 - x1);
