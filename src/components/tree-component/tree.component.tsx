@@ -10,7 +10,7 @@ export enum PathShape {
 
 export type PathFunction = (x1: number, y1: number, x2: number, y2: number) => string;
 
-interface TreeProps {
+export interface TreeProps {
   data: TreeElement;
   nodeWidth?: number;
   nodeHeight?: number;
@@ -147,7 +147,6 @@ export class Tree extends React.Component<TreeProps> {
       }),
       { width: 0, height: 0 }
     );
-    console.log("0000");
     
     return (
       <div>

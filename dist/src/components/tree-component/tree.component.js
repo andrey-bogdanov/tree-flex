@@ -96,6 +96,7 @@ var Tree = /** @class */ (function (_super) {
             width: Math.max(limits.width, node.x + node.widht),
             height: Math.max(limits.height, node.y + node.height)
         }); }, { width: 0, height: 0 }), width = _b.width, height = _b.height;
+        console.log("0000");
         return (React.createElement("div", null,
             React.createElement("div", { className: "root", style: { width: width, height: height } },
                 React.createElement("div", null, dataList.map(function (node) { return (React.createElement("div", { style: { height: nodeHeight, width: nodeWidth, top: node.y, left: node.x }, className: "nodeBox", key: node.id }, content(node))); })),

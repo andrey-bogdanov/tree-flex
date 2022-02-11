@@ -1,31 +1,30 @@
 declare const data: {
-    id: string;
-    name: string;
+    id: number;
     children: ({
-        id: string;
+        id: number;
         name: string;
         children: ({
-            id: string;
+            id: number;
             name: string;
             children: {
-                id: string;
+                id: number;
                 name: string;
                 children: any[];
             }[];
         } | {
-            id: string;
+            id: number;
             name: string;
             children: {
-                id: string;
+                id: number;
                 children: any[];
             }[];
         })[];
     } | {
-        id: string;
+        id: number;
         children: {
-            id: string;
+            id: number;
             children: {
-                id: string;
+                id: number;
                 children: any[];
             }[];
         }[];

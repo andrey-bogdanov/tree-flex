@@ -1,66 +1,67 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var data = {
-    id: 0,
+    id: "node0",
+    name: "root node",
     children: [
         {
-            id: 1,
-            name: "root node",
+            id: "node1",
+            name: "node 1 level 0",
             children: [
                 {
-                    id: 2,
+                    id: "node2",
                     name: "node 1 level 1",
                     children: [
-                        { id: 21, name: "node 1_1 level 2", children: [] },
-                        { id: 22, name: "node 1_2 level 2", children: [] },
-                        { id: 23, name: "node 1_3 level 2", children: [] },
+                        { id: "node2_1", name: "node 1_1 level 2", children: [] },
+                        { id: "node2_2", name: "node 1_2 level 2", children: [] },
+                        { id: "node2_3", name: "node 1_3 level 2", children: [] },
                     ],
                 },
                 {
-                    id: 3,
+                    id: "node3",
                     name: "node 2 level 1",
                     children: [
-                        { id: 31, children: [] },
-                        { id: 32, children: [] },
-                        { id: 33, children: [] },
+                        { id: "node3_1", children: [] },
+                        { id: "node3_2", children: [] },
+                        { id: "node3_3", children: [] },
                     ],
                 },
             ],
         },
         {
-            id: 11,
+            id: "node11",
             children: [
                 {
-                    id: 12,
+                    id: "node12",
                     children: [
-                        { id: 121, children: [] },
-                        { id: 122, children: [] },
-                        { id: 123, children: [] },
+                        { id: "node12_1", children: [] },
+                        { id: "node12_2", children: [] },
+                        { id: "node12_3", children: [] },
                     ],
                 },
                 {
-                    id: 13,
+                    id: "node13",
                     children: [
-                        { id: 131, children: [] },
-                        { id: 132, children: [] },
-                        { id: 133, children: [] },
+                        { id: "node13_1", children: [] },
+                        { id: "node13_2", children: [] },
+                        { id: "node13_3", children: [] },
                     ],
                 },
             ],
         },
         {
-            id: 21,
+            id: "node21",
             children: [
                 {
-                    id: 22,
+                    id: "node22",
                     children: [
-                        { id: 221, children: [] },
-                        { id: 222, children: [] },
+                        { id: "node22_1", children: [] },
+                        { id: "node22_2", children: [] },
                     ],
                 },
                 {
-                    id: 23,
-                    children: [{ id: 231, children: [] }],
+                    id: "node23",
+                    children: [{ id: "node23_1", children: [] }],
                 },
             ],
         },

@@ -5,17 +5,20 @@ var data = {
     children: [
         {
             id: 1,
+            name: "root node",
             children: [
                 {
                     id: 2,
+                    name: "node 1 level 1",
                     children: [
-                        { id: 21, children: [] },
-                        { id: 22, children: [] },
-                        { id: 23, children: [] },
+                        { id: 21, name: "node 1_1 level 2", children: [] },
+                        { id: 22, name: "node 1_2 level 2", children: [] },
+                        { id: 23, name: "node 1_3 level 2", children: [] },
                     ],
                 },
                 {
                     id: 3,
+                    name: "node 2 level 1",
                     children: [
                         { id: 31, children: [] },
                         { id: 32, children: [] },
@@ -25,7 +28,7 @@ var data = {
             ],
         },
         {
-            id: 2,
+            id: 11,
             children: [
                 {
                     id: 12,
