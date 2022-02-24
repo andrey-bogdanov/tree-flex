@@ -1,4 +1,4 @@
-const data = {
+export const dataLong = {
   id: "node0",
   name: "root node",
   children: [
@@ -66,4 +66,11 @@ const data = {
   ],
 };
 
-export default data;
+export const dataOne = { id: "0", children: [] };
+
+export const dataStraight = {
+  id: "1",
+  children: [
+    { id: "2", children: [{ id: "3", children: [{ id: "4", children: [] }] }] },
+  ],
+};

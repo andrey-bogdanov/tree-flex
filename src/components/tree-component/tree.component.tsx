@@ -1,116 +1,32 @@
 import * as React from "react";
 import "./tree.styles.css";
 import pathShapes from "./pathShapes";
-
-export enum PathShape {
-  Bezier = "bezier",
-  Stright = "stright",
-  RoundedAngles = "roundedAngles"
-}
-
-export type PathFunction = (x1: number, y1: number, x2: number, y2: number) => string;
-
-export interface TreeProps {
-  data: TreeElement;
-  nodeWidth?: number;
-  nodeHeight?: number;
-  xOffset?: number | ((level: number) => number);
-  yOffset?: number;
-  pathShape?: PathShape | PathFunction;
-  nodeContent: (node: TreeElementWithCoords) => React.ReactElement;
-  lineClassName?: string;
-}
-
-export interface TreeElement {
-  id: string;
-  children: TreeElement[];
-}
-
-interface Path {
-  id: string;
-  path: string;
-}
-
-export type TreeElementWithCoords = Omit<TreeElement, "children"> & {
-  x: number;
-  y: number;
-  height: number;
-  widht: number;
-  level: number;
-  children: TreeElementWithCoords[];
-};
-
-function processTree(
-  rootElement: TreeElement,
-  yOffset: number,
-  xOffset: number | ((level: number) => number),
-  cellWidht: number,
-  cellHeight: number
-): TreeElementWithCoords {
-  let maxY: number = 0;
-
-  function calculateCoords(treeElement: TreeElement, level: number = 0): TreeElementWithCoords {
-    const children: TreeElementWithCoords[] = treeElement.children.map((ch: TreeElement) =>
-      calculateCoords(ch, level + 1)
-    );
-
-    let y: number;
-
-    if (children.length !== 0) {
-      y = Math.round((children[0].y + children[children.length - 1].y) / 2);
-    } else {
-      y = maxY;
-      maxY = maxY + yOffset + cellHeight;
-    }
-
-    const curentXOffset: number = typeof xOffset === "number" ? xOffset : xOffset(level);
-
-    return {
-      ...treeElement,
-      x: level * (curentXOffset + cellWidht),
-      y: y,
-      children: children,
-      height: cellHeight,
-      widht: cellWidht,
-      level: level
-    };
+import 
+  { processTree, 
+    createNodesArray, 
+    createConnectingLinesArray,
+  } 
+from "./treeBuildFunctions";
+import 
+  {
+    PathFunction,
+    TreeElementWithCoords,
+    TreeProps,
+    Path
   }
-  return calculateCoords(rootElement);
-}
-
-function createNodesArray(node: TreeElementWithCoords): TreeElementWithCoords[] {
-  return node.children.reduce((nodes, child) => [...nodes, ...createNodesArray(child)], [node]);
-}
-
-function createPath(
-  parentNode: TreeElementWithCoords,
-  childNode: TreeElementWithCoords,
-  pathStyle: PathFunction
-): Path {
-  const parentNodeX: number = parentNode.x + parentNode.widht;
-  const parentNodeY: number = parentNode.y + parentNode.height / 2;
-  const childNodeX: number = childNode.x;
-  const childNodeY: number = childNode.y + childNode.height / 2;
-  const id: string = parentNode.id + "--" + childNode.id;
-  return { path: pathStyle(parentNodeX, parentNodeY, childNodeX, childNodeY), id: id };
-}
-
-function createConnectingLinesArray(
-  node: TreeElementWithCoords,
-  cellWidht: number,
-  cellHeight: number,
-  pathStyle: PathFunction
-): Path[] {
-  const linesToChildren: Path[] = node.children.map(child => createPath(node, child, pathStyle));
-  const connectingLines: Path[] = node.children.reduce(
-    (lines, node) => [...lines, ...createConnectingLinesArray(node, cellWidht, cellHeight, pathStyle)],
-    linesToChildren
-  );
-
-  return connectingLines;
-}
+from "./interfaces";
 
 export class Tree extends React.Component<TreeProps> {
+    /**
+    * Class Tree builds tree graph from user's object. Graph exist is rectangles(nodes) and connecting lines. 
+    * @param {TreeElement} data - source user's object.
+    * @param {number} nodeWidth - width of the rectangle(node) in pixels, that user's content is placed in. Not mandatory. 100 by default.
+    * @param {number} nodeHeight - height of the node in pixels. 50 by default.
+    * @param {number | function} xOffset -  x distance between adjacent two nodes. By default 50 pixels. Also, it may be a custom function.
+    * @param {PathShape | PathFunction} pathShape - funcion, calculates svg lines between two nodes. There are three offered functions. bezier by default. Also, it may be a custom function.
+    * @param {function} nodeContent - user's function, returns HTML element, wich will be placed into node rectangle.
+    * @param {string} lineClassName - connecting lines className. Located in tree.style.css. By default "connectingLine".
+    */
   static defaultProps: Pick<TreeProps, "pathShape" | "nodeWidth" | "nodeHeight" | "lineClassName" | "xOffset" | "yOffset"> = {
     pathShape: pathShapes.bezier,
     nodeWidth: 100,
@@ -128,8 +44,11 @@ export class Tree extends React.Component<TreeProps> {
       yOffset,
       xOffset,
       lineClassName,
+      // pathShape,
       nodeContent: content
     }: TreeProps = this.props;
+
+    console.log(this.props.pathShape);
     
     const pathStyle: PathFunction =
     typeof this.props.pathShape == "function" ? this.props.pathShape : pathShapes[this.props.pathShape];
@@ -142,7 +61,7 @@ export class Tree extends React.Component<TreeProps> {
 
     const { width, height }: { width: number; height: number } = dataList.reduce(
       (limits, node) => ({
-        width: Math.max(limits.width, node.x + node.widht),
+        width: Math.max(limits.width, node.x + node.width),
         height: Math.max(limits.height, node.y + node.height)
       }),
       { width: 0, height: 0 }
@@ -170,6 +89,5 @@ export class Tree extends React.Component<TreeProps> {
         </div>
       </div>
     );
-  }
-}
-
+  };
+};
