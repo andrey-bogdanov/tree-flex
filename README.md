@@ -90,21 +90,12 @@ export const data = {
 
 ## Component props
 
-| Property   | Type               | Mandatory | Default  | Description                                |
-| :--------- | :----------------- | :-------- | :------- | :----------------------------------------- |
-| data       | object             | yes       | no       | The data to be rendered as a tree          |
-| nodeWidth  | number             | no        | 100      | in px                                      |
-| nodeHeight | number             | no        | 50       | in px                                      |
-| `xOffset`  | nember or function | no        | 50       | in px                                      |
-| yOffset    | number             | no        | 50       | in px                                      |
-| pathShape  | enum or function   | no        | “bezier” | Defines curve shape, which connects nodes. |
-
-can be:
-“bezier”
-“straight”
-“raundedAngle"
-
-| | | | | |
-| | | | | |
-| | | | | |
-| | | | | |
+| Property      | Type               | Mandatory | Default  | Description                               |
+| :------------ | :----------------- | :-------- | :------- | :---------------------------------------- |
+| `data`        | object             | yes       | no       | The data to be rendered as a tree         |
+| `nodeWidth`   | number             | no        | 100      | in px                                     |
+| `nodeHeight`  | number             | no        | 50       | in px                                     |
+| `xOffset`     | nember or function | no        | 50       | in px                                     |
+| `yOffset`     | number             | no        | 50       | in px                                     |
+| `pathShape`   | enum or function   | no        | “bezier” | Defines curve shape, which connects nodes |
+| `nodeContent` | function           | yes       | no       | Should return html element                |
