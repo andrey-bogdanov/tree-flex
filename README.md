@@ -99,3 +99,5 @@ export const data = {
 | `yOffset`     | number             | no        | 50       | in px                                     |
 | `pathShape`   | enum or function   | no        | “bezier” | Defines curve shape, which connects nodes |
 | `nodeContent` | function           | yes       | no       | Should return html element                |
+
+[TypeDoc documentation](./docs/index.html)
