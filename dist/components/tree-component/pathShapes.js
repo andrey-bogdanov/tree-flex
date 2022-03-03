@@ -1,10 +1,27 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.stright = exports.roundedAngles = exports.bezier = void 0;
+exports.straight = exports.roundedAngles = exports.bezier = void 0;
+/**
+ * calculates d attribute for path tag from two nodes coordinates.
+ * @param x1 - starp point x
+ * @param y1- starp point x
+ * @param x2 - end point x
+ * @param y2 - end point x
+ * @returns { string } - d attribute for <path>
+ */
 function bezier(x1, y1, x2, y2) {
     return "M".concat(x1, " ").concat(y1, " C").concat((x1 + x2) / 2, ",").concat(y1, " ").concat((x1 + x2) / 2, ",").concat(y2, " ").concat(x2, ",").concat(y2);
 }
 exports.bezier = bezier;
+/**
+ * calculates d attribute for path tag from two nodes coordinates.
+ * @param x1 - starp point x
+ * @param y1 - starp point x
+ * @param x8 - end point x
+ * @param y8 - end point x
+ * @param radius - optional parameter
+ * @returns
+ */
 function roundedAngles(x1, y1, x8, y8, radius) {
     if (radius === void 0) { radius = 20; }
     var x3 = (x8 + x1) / 2;
@@ -22,13 +39,13 @@ function roundedAngles(x1, y1, x8, y8, radius) {
     return "M ".concat(x1, " ").concat(y1, " L ").concat(x2, " ").concat(y2, " Q ").concat(x3, " ").concat(y3, ", ").concat(x4, " ").concat(y4, " L ").concat(x5, " ").concat(y5, " Q ").concat(x6, " ").concat(y6, ", ").concat(x7, " ").concat(y7, " L ").concat(x8, " ").concat(y8);
 }
 exports.roundedAngles = roundedAngles;
-function stright(x1, y1, x2, y2) {
+function straight(x1, y1, x2, y2) {
     return "M ".concat(x1, " ").concat(y1, " L ").concat(x2, " ").concat(y2);
 }
-exports.stright = stright;
+exports.straight = straight;
 var pathShapes = {
     bezier: bezier,
     roundedAngles: roundedAngles,
-    stright: stright
+    straight: straight
 };
 exports.default = pathShapes;

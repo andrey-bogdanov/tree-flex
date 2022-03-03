@@ -1,9 +1,26 @@
 import { PathFunction, PathShape } from "./interfaces";
 
+/**
+ * calculates d attribute for path tag from two nodes coordinates. 
+ * @param x1 - starp point x
+ * @param y1- starp point x
+ * @param x2 - end point x
+ * @param y2 - end point x
+ * @returns { string } - d attribute for <path>
+ */
 export function bezier(x1: number, y1: number, x2: number, y2: number): string {
   return `M${x1} ${y1} C${(x1 + x2) / 2},${y1} ${(x1 + x2) / 2},${y2} ${x2},${y2}`;
 }
 
+/**
+ * calculates d attribute for path tag from two nodes coordinates.
+ * @param x1 - starp point x
+ * @param y1 - starp point x
+ * @param x8 - end point x
+ * @param y8 - end point x
+ * @param radius - optional parameter
+ * @returns 
+ */
 export function roundedAngles(x1: number, y1: number, x8: number, y8: number, radius: number = 20 ): string {
   const x3: number = (x8 + x1) / 2;
   const y3: number = y1;

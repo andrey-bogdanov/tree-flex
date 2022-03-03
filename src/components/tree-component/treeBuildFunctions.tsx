@@ -7,6 +7,15 @@ import
   } 
 from "./interfaces"
 
+/**
+ * Calculates and adds coordinates into source object
+ * @param rootElement - source object
+ * @param {number} yOffset - distance between adjacent nodes by y
+ * @param { number | function } xOffset - distance between adjacent nodes by x
+ * @param { number } cellwidth - node width
+ * @param { number } cellHeight - node height
+ * @returns {object} sourse object with coordinates
+ */
 export function processTree(
   rootElement: TreeElement,
   yOffset: number,
@@ -47,10 +56,22 @@ export function processTree(
   return calculateCoords(rootElement);
 }
 
+/**
+ * makes flat array from tree object
+ * @param { TreeElementWithCoords } node - source object with coordinates
+ * @returns nodes array
+ */
 export function createNodesArray(node: TreeElementWithCoords): TreeElementWithCoords[] {
   return node.children.reduce((nodes, child) => [...nodes, ...createNodesArray(child)], [node]);
 }
 
+/**
+ * creates connecting line between adjacent nodes 
+ * @param { TreeElementWithCoords } parentNode - node from which the line begins
+ * @param { TreeElementWithCoords } childNode - node to which the line ends
+ * @param { enum | function} pathStyle - function which define line shape 
+ * @returns attribute d for <path> tsg
+ */
 export function createPath(
   parentNode: TreeElementWithCoords,
   childNode: TreeElementWithCoords,
@@ -64,6 +85,14 @@ export function createPath(
   return { path: pathStyle(parentNodeX, parentNodeY, childNodeX, childNodeY), id: id };
 }
 
+/**
+ * Creates array of connecting lines
+ * @param {object} node - source object with coordinates
+ * @param {number} cellwidth - node width
+ * @param {number} cellHeight - node height
+ * @param {function} pathStyle - path style function
+ * @returns array of objects with line id and b attribute of <path> tag  
+ */
 export function createConnectingLinesArray(
   node: TreeElementWithCoords,
   cellwidth: number,

@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var data = {
+exports.dataStraight = exports.dataOne = exports.dataLong = void 0;
+exports.dataLong = {
     id: "node0",
     name: "root node",
     children: [
@@ -67,4 +68,10 @@ var data = {
         },
     ],
 };
-exports.default = data;
+exports.dataOne = { id: "0", children: [] };
+exports.dataStraight = {
+    id: "1",
+    children: [
+        { id: "2", children: [{ id: "3", children: [{ id: "4", children: [] }] }] },
+    ],
+};

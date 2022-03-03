@@ -28,6 +28,7 @@ var Tree = /** @class */ (function (_super) {
     Tree.prototype.render = function () {
         var _a = this.props, nodeWidth = _a.nodeWidth, nodeHeight = _a.nodeHeight, data = _a.data, yOffset = _a.yOffset, xOffset = _a.xOffset, lineClassName = _a.lineClassName, content = _a.nodeContent;
         var pathStyle = typeof this.props.pathShape == "function" ? this.props.pathShape : pathShapes_1.default[this.props.pathShape];
+        console.log(this.props.pathShape);
         var dataTree = (0, treeBuildFunctions_1.processTree)(data, yOffset, xOffset, nodeWidth, nodeHeight);
         var dataList = (0, treeBuildFunctions_1.createNodesArray)(dataTree);
         var connectingLines = (0, treeBuildFunctions_1.createConnectingLinesArray)(dataTree, nodeWidth, nodeHeight, pathStyle);
@@ -41,6 +42,18 @@ var Tree = /** @class */ (function (_super) {
                 React.createElement("svg", { width: width, height: height }, connectingLines.map(function (path) { return (React.createElement("path", { d: path.path, className: lineClassName, key: path.id })); })))));
     };
     ;
+    /**
+    * @class Tree
+    * builds tree graph from user's object. Graph exist is rectangles(nodes) and connecting lines.
+    * @param {TreeElement} data - source user's object.
+    * @param {number} nodeWidth - width of the rectangle(node) in pixels, that user's content is placed in. Not mandatory. 100 by default.
+    * @param {number} nodeHeight - height of the node in pixels. 50 by default.
+    * @param {number | function} xOffset -  x distance between adjacent two nodes. By default 50 pixels. Also, it may be a custom function.
+    * @param {PathShape | PathFunction} pathShape - funcion, calculates svg lines between two nodes. There are three offered functions. bezier by default. Also, it may be a custom function.
+    * @param {function} nodeContent - user's function, returns HTML element, wich will be placed into node rectangle.
+    * @param {string} lineClassName - connecting lines className. Located in tree.style.css. By default "connectingLine".
+    * @returns {HTMLElement} renders tree
+    */
     Tree.defaultProps = {
         pathShape: pathShapes_1.default.bezier,
         nodeWidth: 100,

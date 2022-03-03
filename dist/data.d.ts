@@ -1,4 +1,4 @@
-declare const data: {
+export declare const dataLong: {
     id: string;
     name: string;
     children: ({
@@ -32,4 +32,20 @@ declare const data: {
         name?: undefined;
     })[];
 };
-export default data;
+export declare const dataOne: {
+    id: string;
+    children: any[];
+};
+export declare const dataStraight: {
+    id: string;
+    children: {
+        id: string;
+        children: {
+            id: string;
+            children: {
+                id: string;
+                children: any[];
+            }[];
+        }[];
+    }[];
+};

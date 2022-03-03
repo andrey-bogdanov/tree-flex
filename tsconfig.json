@@ -9,5 +9,14 @@
     "lib": ["ES2015"],
     "declaration": true,
     "module": "commonjs"
+  },
+  "typedocOptions": {
+    "entryPoints": [
+      "src/components/tree-component/tree.component.tsx",
+      "src/components/tree-component/pathShapes.tsx",
+      "src/components/tree-component/treeBuildFunctions.tsx",
+      "src/components/tree-component/interfaces.tsx"         
+    ],
+    "out": "docs"
   }
 }

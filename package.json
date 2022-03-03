@@ -22,12 +22,14 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "style-loader": "^3.3.1",
+    "typedoc": "^0.22.12",
     "typescript": "^4.5.4",
     "webpack": "^5.67.0"
   },
   "scripts": {
     "build": "tsc && cp src/components/tree-component/tree.styles.css dist/components/tree-component",
-    "test": "jest --watchAll"
+    "test": "jest --watchAll",
+    "typedoc": "npx typedoc"
   },
   "author": "",
   "license": "ISC",
