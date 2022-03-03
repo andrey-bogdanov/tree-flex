@@ -90,15 +90,21 @@ export const data = {
 
 ## Component props
 
-| Property | Type   | Mandatory | Default | Description                       |
-| -------- | ------ | --------- | ------- | --------------------------------- |
-| data     | object | yes       | no      | The data to be rendered as a tree |
+| Property   | Type               | Mandatory | Default  | Description                                |
+| :--------- | :----------------- | :-------- | :------- | :----------------------------------------- |
+| data       | object             | yes       | no       | The data to be rendered as a tree          |
+| nodeWidth  | number             | no        | 100      | in px                                      |
+| nodeHeight | number             | no        | 50       | in px                                      |
+| `xOffset`  | nember or function | no        | 50       | in px                                      |
+| yOffset    | number             | no        | 50       | in px                                      |
+| pathShape  | enum or function   | no        | “bezier” | Defines curve shape, which connects nodes. |
 
-<mark-down>
-  <render>
-    <h1>h1</h1>
-    <ul>
-      <li>test</li>
-    </ul>
-  </render>
-</mark-down>
+can be:
+“bezier”
+“straight”
+“raundedAngle"
+
+| | | | | |
+| | | | | |
+| | | | | |
+| | | | | |
