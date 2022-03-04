@@ -47,7 +47,7 @@ export enum PathShape {
 };
 
 /**
- * @enum Path 
+ * @interface Path 
  */
 export interface Path {
   id: string;

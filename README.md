@@ -9,31 +9,14 @@ npm install treeflex --save
 ## Usage
 
 ```
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
 import  { Tree } from 'treeflex';
-import  { data } from './data.ts'
-
-function node(node) {
- return (
-   <div>
-     {node.subject}
-   </div>
- )
-};
-
-function xOffset(level) {
-   const offset = 30 + level*10
- return offset
-};
 
 ReactDOM.render(
  <React.StrictMode>
    <Tree data={data}
-     nodeContent={node}
+     nodeContent={ node => <div> {node.subject} </div> }
      yOffset={15}
-     xOffset={xOffset}
+     xOffset={ () => 30+level*10 }
      nodeWidth={150}
      nodeHeight={50}
      pathShape={"bezier"}
@@ -95,9 +78,9 @@ export const data = {
 | `data`        | object             | yes       | no       | The data to be rendered as a tree         |
 | `nodeWidth`   | number             | no        | 100      | in px                                     |
 | `nodeHeight`  | number             | no        | 50       | in px                                     |
-| `xOffset`     | nember or function | no        | 50       | in px                                     |
+| `xOffset`     | number or function | no        | 50       | in px                                     |
 | `yOffset`     | number             | no        | 50       | in px                                     |
 | `pathShape`   | enum or function   | no        | “bezier” | Defines curve shape, which connects nodes |
 | `nodeContent` | function           | yes       | no       | Should return html element                |
 
-[TypeDoc documentation](./docs/index.html)
+[TypeDoc documentation](https://andrey-bogdanov.github.io/)
