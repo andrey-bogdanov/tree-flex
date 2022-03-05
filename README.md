@@ -2,7 +2,7 @@
 
 This is simple component which renders data as a tree using svg.
 
-[Example](https://andrey-bogdanov.github.io/example/index.html)
+[Example](https://andrey-bogdanov.github.io/example/)
 
 ## Installing
 
