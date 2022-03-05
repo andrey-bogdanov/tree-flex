@@ -2,14 +2,16 @@
 
 This is simple component which renders data as a tree using svg.
 
+[Example](https://andrey-bogdanov.github.io/example/index.html)
+
 ## Installing
 
-npm install treeflex --save
+npm install tree-graph-flex --save
 
 ## Usage
 
 ```
-import  { Tree } from 'treeflex';
+import  { Tree } from 'tree-graph-flex';
 
 ReactDOM.render(
  <React.StrictMode>
@@ -83,4 +85,6 @@ export const data = {
 | `pathShape`   | enum or function   | no        | “bezier” | Defines curve shape, which connects nodes |
 | `nodeContent` | function           | yes       | no       | Should return html element                |
 
-[TypeDoc documentation](https://andrey-bogdanov.github.io/)
+[TypeDoc documentation](https://andrey-bogdanov.github.io/docs/index.html)
+
+

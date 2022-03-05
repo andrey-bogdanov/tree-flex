@@ -43,7 +43,7 @@ export declare enum PathShape {
     RoundedAngles = "roundedAngles"
 }
 /**
- * @enum Path
+ * @interface Path
  */
 export interface Path {
     id: string;
