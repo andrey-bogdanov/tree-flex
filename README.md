@@ -1,8 +1,8 @@
-# FlexTree component
+#Tree Flex component
 
 This is simple component which renders data as a tree using svg.
 
-[Example](https://andrey-bogdanov.github.io/example/index.html)
+[Example](https://andrey-bogdanov.github.io/treeflex-ed/example/build)
 
 ## Installing
 
@@ -85,6 +85,6 @@ export const data = {
 | `pathShape`   | enum or function   | no        | “bezier” | Defines curve shape, which connects nodes |
 | `nodeContent` | function           | yes       | no       | Should return html element                |
 
-[TypeDoc documentation](https://andrey-bogdanov.github.io/docs/index.html)
+[TypeDoc documentation](https://andrey-bogdanov.github.io/treeflex-ed/docs/index.html)
 
 
