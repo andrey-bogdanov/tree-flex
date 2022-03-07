@@ -10,7 +10,7 @@ npm install tree-graph-flex --save
 
 ## Usage
 
-```
+``` js
 import  { Tree } from 'tree-graph-flex';
 
 ReactDOM.render(
@@ -18,7 +18,7 @@ ReactDOM.render(
    <Tree data={data}
      nodeContent={ node => <div> {node.subject} </div> }
      yOffset={15}
-     xOffset={ () => 30+level*10 }
+     xOffset={ level => 30 + level * 10 }
      nodeWidth={150}
      nodeHeight={50}
      pathShape={"bezier"}
@@ -31,8 +31,8 @@ ReactDOM.render(
 
 ## Example data object
 
-```
-export const data = {
+``` js
+const data = {
   id: "0",
   subject: "animals",
   children: [
