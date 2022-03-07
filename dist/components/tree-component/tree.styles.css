@@ -4,18 +4,14 @@
 
 .nodeBox {
   border-radius: 4px;
-  background-color: #dfdfdf;
-  border-color: #fcd7e5;
+  border-color: rgb(199, 199, 199);
   border-style: solid;
   border-width: 1px;
   position: absolute;
-  display: flex;
-  padding-left: 10px;
-  align-items: center;
 }
 
 .connectingLine {
   fill: none;
   stroke-width: 1;
-  stroke: #a1cffe;
+  stroke: rgb(180, 180, 180);
 }
