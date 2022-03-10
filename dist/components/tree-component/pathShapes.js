@@ -36,9 +36,11 @@ function roundedAngles(x1, y1, x8, y8, radius) {
     var y5 = y8 - radius * Math.sign(y8 - y1);
     var x7 = x6 + radius * Math.sign(x8 - x1);
     var y7 = y8;
+    var y1ForNewRadius = y1;
+    var y8ForNewRadius = y8;
     var radiusForNewRadius = radius;
     if ((y1 < y8 && y5 <= y4) || (y1 > y8 && y5 >= y4)) {
-        var radius_1 = radiusForNewRadius - 1;
+        var radius_1 = Math.trunc(Math.abs(y1ForNewRadius - y8ForNewRadius) / 4);
         var x3_1 = (x8 + x1) / 2;
         var y3_1 = y1;
         var x2_1 = x3_1 - radius_1 * Math.sign(x8 - x1);
