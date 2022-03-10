@@ -83,7 +83,8 @@ const data = {
 | `xOffset`     | number or function | no        | 50       | in px                                     |
 | `yOffset`     | number             | no        | 50       | in px                                     |
 | `pathShape`   | enum or function   | no        | “bezier” | Defines curve shape, which connects nodes |
-| `nodeContent` | function           | yes       | no       | Should return html element                |
+| `nodeContent` | function           | yes       | no       | Node box content. Html element            |
+
 
 [TypeDoc documentation](https://andrey-bogdanov.github.io/treeflex-ed/docs/index.html)
 
