@@ -36,7 +36,7 @@ export function roundedAngles(x1: number, y1: number, x8: number, y8: number, ra
   const y7: number = y8;
   const radiusForNewRadius: number = radius;
   if ((y1 < y8 && y5 <= y4) || (y1 > y8 && y5 >= y4)) {
-    const radius: number = radiusForNewRadius - 1;
+    const radius: number = Math.trunc(radiusForNewRadius * 0.8);
     const x3: number = (x8 + x1) / 2;
     const y3: number = y1;
     const x2: number = x3 - radius * Math.sign(x8 - x1);
