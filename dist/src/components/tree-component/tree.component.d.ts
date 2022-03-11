@@ -2,7 +2,7 @@ import * as React from "react";
 import "./tree.styles.css";
 export declare enum PathShape {
     Bezier = "bezier",
-    Stright = "stright",
+    Straight = "straight",
     RoundedAngles = "roundedAngles"
 }
 export declare type PathFunction = (x1: number, y1: number, x2: number, y2: number) => string;
