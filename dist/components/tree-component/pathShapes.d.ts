@@ -27,7 +27,6 @@ export declare function roundedAngles(x1: number, y1: number, x8: number, y8: nu
  * @returns - d attribute for <path>
  */
 export declare function staticRadiusRoundedAngles(x1: number, y1: number, x8: number, y8: number, radius: number): string;
-export declare function straight(x1: number, y1: number, x2: number, y2: number): string;
 /**
 * calculates d attribute for path tag from two nodes coordinates.
 * @param x1 - starp point x
@@ -36,6 +35,7 @@ export declare function straight(x1: number, y1: number, x2: number, y2: number)
 * @param y2 - end point x
 * @returns { string } - d attribute for <path>
 */
+export declare function straight(x1: number, y1: number, x2: number, y2: number): string;
 declare const pathShapes: {
     [key in PathShape]: PathFunction;
 };

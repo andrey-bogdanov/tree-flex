@@ -51,10 +51,6 @@ function staticRadiusRoundedAngles(x1, y1, x8, y8, radius) {
     return "M ".concat(x1, " ").concat(y1, " L ").concat(x2, " ").concat(y2, " Q ").concat(x3, " ").concat(y3, ", ").concat(x4, " ").concat(y4, " L ").concat(x5, " ").concat(y5, " Q ").concat(x6, " ").concat(y6, ", ").concat(x7, " ").concat(y7, " L ").concat(x8, " ").concat(y8);
 }
 exports.staticRadiusRoundedAngles = staticRadiusRoundedAngles;
-function straight(x1, y1, x2, y2) {
-    return "M ".concat(x1, " ").concat(y1, " L ").concat(x2, " ").concat(y2);
-}
-exports.straight = straight;
 /**
 * calculates d attribute for path tag from two nodes coordinates.
 * @param x1 - starp point x
@@ -63,6 +59,10 @@ exports.straight = straight;
 * @param y2 - end point x
 * @returns { string } - d attribute for <path>
 */
+function straight(x1, y1, x2, y2) {
+    return "M ".concat(x1, " ").concat(y1, " L ").concat(x2, " ").concat(y2);
+}
+exports.straight = straight;
 var pathShapes = {
     bezier: bezier,
     roundedAngles: roundedAngles,
