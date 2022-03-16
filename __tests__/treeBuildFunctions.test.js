@@ -155,7 +155,7 @@ describe("createPath, creates object with svg path and path id", () => {
   test("path content, roundedAngles", () => {
     expect(createPath(nodeArray[1], nodeArray[2], roundedAngles)).toEqual(
       {
-        path: 'M 250 275 L 255 275 Q 275 275, 275 255 L 275 145 Q 275 125, 295 125 L 300 125',
+        path: 'M 250 275 L 258.3333333333333 275 Q 275 275, 275 258.3333333333333 L 275 141.66666666666666 Q 275 125, 291.6666666666667 125 L 300 125',
         id: 'node1--node2'
       }
     );

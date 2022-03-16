@@ -10,7 +10,7 @@ describe("Path shape test", () => {
 
   describe("roundedAngles", () => {
     test("return expexted value", () => {
-      expect(roundedAngles(400, 1425, 450, 1425)).toBe("M 400 1425 L 405 1425 Q 425 1425, 425 1425 L 425 1425 Q 425 1425, 445 1425 L 450 1425");
+      expect(roundedAngles(400, 1425, 450, 1425)).toBe("M 400 1425 L 425 1425 Q 425 1425, 425 1425 L 425 1425 Q 425 1425, 425 1425 L 450 1425");
     });
   });
 
