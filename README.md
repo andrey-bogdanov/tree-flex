@@ -80,11 +80,11 @@ const data = {
 | `data`          | object             | yes       | no             | The data to be rendered as a tree                             |
 | `nodeWidth`     | number             | no        | 100            | Width node container                                          |
 | `nodeHeight`    | number             | no        | 50             | Height node container                                         |
-| `xOffset`       | number or function | no        | 50             | distance between adjacent nodes by x                          |
-| `yOffset`       | number             | no        | 50             | distance between adjacent nodes by y                          |
+| `xOffset`       | number or function | no        | 50             | Distance between adjacent nodes by x                          |
+| `yOffset`       | number             | no        | 50             | Distance between adjacent nodes by y                          |
 | `pathShape`     | enum or function   | no        | “bezier”       | Defines curve shape, which connects nodes                     |
 | `nodeContent`   | function           | yes       | no             | Node box content. Html element                                |
-| `lineClassName` | string             | no        | connectingLine | className, defines style of curve shape, which connects nodes |
+| `lineClassName` | string             | no        | connectingLine | ClassName, defines style of curve shape, which connects nodes |
 
 
 [TypeDoc documentation](https://andrey-bogdanov.github.io/treeflex-ed/docs/index.html)
