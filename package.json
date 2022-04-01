@@ -1,6 +1,6 @@
 {
   "name": "tree-graph-flex",
-  "version": "1.0.21",
+  "version": "1.0.22",
   "description": "Tree builder, with a lot of options",
   "main": "dist/index.js",
   "repository": {
