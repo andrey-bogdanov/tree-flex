@@ -1,4 +1,4 @@
-## Tree Flex component
+## Tree Graph Flex 
 
 This is simple component which renders data as a tree using svg.
 
