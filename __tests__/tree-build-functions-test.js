@@ -1,6 +1,6 @@
-import { processTree, createNodesArray, createPath, createConnectingLinesArray } from "../src/components/tree-component/treeBuildFunctions";
+import { processTree, createNodesArray, createPath, createConnectingLinesArray } from "../src/tree-graph-flex/tree-build-functions";
 import { dataLong, dataOne, dataStraight } from "../src/data";
-import { bezier, straight, roundedAngles } from "../src/components/tree-component/pathShapes"
+import { bezier, straight, roundedAngles } from "../src/tree-graph-flex/path-shapes"
 
 
 describe("processTree, calculating and adding coords, size and level into source object", () => {
@@ -10,7 +10,7 @@ describe("processTree, calculating and adding coords, size and level into source
   );
 
   test("25 nodes object", () => {
-    expect(subject(dataLong)).toBeDefined(); // полезно ли это проверить ?
+    expect(subject(dataLong)).toBeDefined();
     expect(subject(dataLong).children[1].children[0].children[1]).toEqual(
       {
         "children": [],
@@ -79,7 +79,7 @@ describe("createNodesArray, creating flat array from object", () => {
         }
       );
     });
-  })
+  });
 
   describe("1 node object", () => {
 
@@ -141,7 +141,6 @@ describe("createPath, creates object with svg path and path id", () => {
       }
     );
   });
-
   test("path content, straight", () => {
     expect(createPath(nodeArray[1], nodeArray[2], straight)).toEqual(
       {
@@ -149,9 +148,7 @@ describe("createPath, creates object with svg path and path id", () => {
         id: 'node1--node2'
       }
     );
-  }
-  );
-
+  });
   test("path content, roundedAngles", () => {
     expect(createPath(nodeArray[1], nodeArray[2], roundedAngles)).toEqual(
       {
@@ -159,9 +156,7 @@ describe("createPath, creates object with svg path and path id", () => {
         id: 'node1--node2'
       }
     );
-  }
-  );
-
+  });
 });
 
 describe("createConnectingLinesArray", () => {

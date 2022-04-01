@@ -1,21 +1,21 @@
 import * as React from "react";
-import "./tree.styles.css";
-import pathShapes, { straight } from "./pathShapes";
+import "./tree-styles.css";
+import pathShapes, { straight } from "./path-shapes";
 import {
-processTree,
-createNodesArray,
-createConnectingLinesArray,
+  processTree,
+  createNodesArray,
+  createConnectingLinesArray,
 }
-  from "./treeBuildFunctions";
+  from "./tree-build-functions";
 import {
-PathFunction,
-TreeElementWithCoords,
-TreeProps,
-Path
+  PathFunction,
+  TreeElementWithCoords,
+  TreeProps,
+  Path
 }
   from "./interfaces";
 
-export class Tree extends React.Component<TreeProps> {
+export class TreeGraphFlex extends React.Component<TreeProps> {
   /**
   * @class Tree 
   * builds tree graph from user's object. Graph exist is rectangles(nodes) and connecting lines. 
@@ -48,15 +48,10 @@ export class Tree extends React.Component<TreeProps> {
       nodeContent: content
     }: TreeProps = this.props;
 
-    const pathStyle: PathFunction =
-      typeof this.props.pathShape == "function" ? this.props.pathShape : pathShapes[this.props.pathShape];
-
+    const pathStyle: PathFunction = typeof this.props.pathShape == "function" ? this.props.pathShape : pathShapes[this.props.pathShape];
     const dataTree: TreeElementWithCoords = processTree(data, yOffset, xOffset, nodeWidth, nodeHeight);
-
     const dataList: TreeElementWithCoords[] = createNodesArray(dataTree);
-
     const connectingLines: Path[] = createConnectingLinesArray(dataTree, nodeWidth, nodeHeight, pathStyle);
-
     const { width, height }: { width: number; height: number } = dataList.reduce(
       (limits, node) => ({
         width: Math.max(limits.width, node.x + node.width),

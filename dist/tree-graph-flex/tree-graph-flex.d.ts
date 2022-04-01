@@ -1,7 +1,7 @@
 import * as React from "react";
-import "./tree.styles.css";
+import "./tree-styles.css";
 import { TreeProps } from "./interfaces";
-export declare class Tree extends React.Component<TreeProps> {
+export declare class TreeGraphFlex extends React.Component<TreeProps> {
     /**
     * @class Tree
     * builds tree graph from user's object. Graph exist is rectangles(nodes) and connecting lines.

@@ -1,11 +1,10 @@
-import 
-  { 
-    TreeElement, 
-    PathFunction,
-    TreeElementWithCoords,
-    Path
-  } 
-from "./interfaces"
+import {
+  TreeElement,
+  PathFunction,
+  TreeElementWithCoords,
+  Path
+}
+  from "./interfaces";
 
 /**
  * Calculates and adds coordinates into source object
@@ -24,24 +23,18 @@ export function processTree(
   cellHeight: number
 ): TreeElementWithCoords {
   let maxY: number = 0;
-
   function calculateCoords(treeElement: TreeElement, level: number = 0): TreeElementWithCoords {
-    
     const children: TreeElementWithCoords[] = treeElement.children.map((child: TreeElement) =>
       calculateCoords(child, level + 1)
     );
-   
     let y: number;
-
     if (children.length !== 0) {
       y = Math.round((children[0].y + children[children.length - 1].y) / 2);
     } else {
       y = maxY;
       maxY = maxY + yOffset + cellHeight;
-    }
-
+    };
     const curentXOffset: number = typeof xOffset === "number" ? xOffset : xOffset(level);
-
     return {
       ...treeElement,
       x: level * (curentXOffset + cellwidth),
@@ -51,10 +44,9 @@ export function processTree(
       width: cellwidth,
       level: level
     };
-  }
-
+  };
   return calculateCoords(rootElement);
-}
+};
 
 /**
  * makes flat array from tree object
@@ -63,7 +55,7 @@ export function processTree(
  */
 export function createNodesArray(node: TreeElementWithCoords): TreeElementWithCoords[] {
   return node.children.reduce((nodes, child) => [...nodes, ...createNodesArray(child)], [node]);
-}
+};
 
 /**
  * creates connecting line between adjacent nodes 
@@ -83,7 +75,7 @@ export function createPath(
   const childNodeY: number = childNode.y + childNode.height / 2;
   const id: string = parentNode.id + "--" + childNode.id;
   return { path: pathStyle(parentNodeX, parentNodeY, childNodeX, childNodeY), id: id };
-}
+};
 
 /**
  * Creates array of connecting lines
@@ -104,5 +96,5 @@ export function createConnectingLinesArray(
     (lines, node) => [...lines, ...createConnectingLinesArray(node, cellwidth, cellHeight, pathStyle)],
     linesToChildren
   );
-    return connectingLines;
-}
+  return connectingLines;
+};

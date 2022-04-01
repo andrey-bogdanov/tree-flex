@@ -1,11 +1,11 @@
 {
   "name": "tree-graph-flex",
-  "version": "1.0.19",
+  "version": "1.0.20",
   "description": "Tree builder, with a lot of options",
   "main": "dist/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/andrey-bogdanov/tree-flex"
+    "url": "https://github.com/andrey-bogdanov/tree-graph-flex"
   },
   "autor": "asb13",
   "license": "ISC",
@@ -33,7 +33,7 @@
     "webpack": "^5.67.0"
   },
   "scripts": {
-    "build": "tsc && cp src/components/tree-component/tree.styles.css dist/components/tree-component",
+    "build": "tsc && cp src/tree-graph-flex/tree-styles.css dist/tree-graph-flex",
     "test": "jest --watchAll",
     "typedoc": "npx typedoc"
   },

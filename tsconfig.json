@@ -1,21 +1,23 @@
 {
   "include": [
-  "src"
- ],
+    "src"
+  ],
   "compilerOptions": {
     "outDir": "dist",
     "jsx": "react",
     "target": "ES5",
-    "lib": ["ES2015"],
+    "lib": [
+      "ES2015"
+    ],
     "declaration": true,
     "module": "commonjs"
   },
   "typedocOptions": {
     "entryPoints": [
-      "src/components/tree-component/tree.component.tsx",
-      "src/components/tree-component/pathShapes.tsx",
-      "src/components/tree-component/treeBuildFunctions.tsx",
-      "src/components/tree-component/interfaces.tsx"         
+      "src/tree-graph-flex/tree-graph-flex.tsx",
+      "src/tree-graph-flex/path-shapes.tsx",
+      "src/tree-graph-flex/tree-build-functions.tsx",
+      "src/tree-graph-flex/interfaces.tsx"
     ],
     "out": "docs"
   }

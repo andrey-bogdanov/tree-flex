@@ -1,17 +1,17 @@
-#Tree Flex component
+## Tree Flex component
 
 This is simple component which renders data as a tree using svg.
 
-[Example](https://andrey-bogdanov.github.io/treeflex-ed/example/build)
+### [Example](https://andrey-bogdanov.github.io/treeflex-ed/example/build)
 
-## Installing
+### Installing
 
 npm install tree-graph-flex --save
 
-## Usage
+### Usage
 
 ``` js
-import  { Tree } from 'tree-graph-flex';
+import  { TreeGraphFlex } from 'tree-graph-flex';
 
 ReactDOM.render(
  <React.StrictMode>
@@ -29,7 +29,7 @@ ReactDOM.render(
 
 ```
 
-## Example data object
+### Example data object
 
 ``` js
 const data = {
@@ -73,15 +73,15 @@ const data = {
 
 ```
 
-## Component props
+### Component props
 
 | Property        | Type               | Mandatory | Default        | Description                                                   |
 | :-------------- | :----------------- | :-------- | :------------- | :------------------------------------------------------------ |
 | `data`          | object             | yes       | no             | The data to be rendered as a tree                             |
-| `nodeWidth`     | number             | no        | 100            | in px                                                         |
-| `nodeHeight`    | number             | no        | 50             | in px                                                         |
-| `xOffset`       | number or function | no        | 50             | in px                                                         |
-| `yOffset`       | number             | no        | 50             | in px                                                         |
+| `nodeWidth`     | number             | no        | 100            | Width node container                                          |
+| `nodeHeight`    | number             | no        | 50             | Height node container                                         |
+| `xOffset`       | number or function | no        | 50             | distance between adjacent nodes by x                          |
+| `yOffset`       | number             | no        | 50             | distance between adjacent nodes by y                          |
 | `pathShape`     | enum or function   | no        | “bezier”       | Defines curve shape, which connects nodes                     |
 | `nodeContent`   | function           | yes       | no             | Node box content. Html element                                |
 | `lineClassName` | string             | no        | connectingLine | className, defines style of curve shape, which connects nodes |

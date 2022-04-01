@@ -45,12 +45,15 @@ function processTree(rootElement, yOffset, xOffset, cellwidth, cellHeight) {
             y = maxY;
             maxY = maxY + yOffset + cellHeight;
         }
+        ;
         var curentXOffset = typeof xOffset === "number" ? xOffset : xOffset(level);
         return __assign(__assign({}, treeElement), { x: level * (curentXOffset + cellwidth), y: y, children: children, height: cellHeight, width: cellwidth, level: level });
     }
+    ;
     return calculateCoords(rootElement);
 }
 exports.processTree = processTree;
+;
 /**
  * makes flat array from tree object
  * @param { TreeElementWithCoords } node - source object with coordinates
@@ -60,6 +63,7 @@ function createNodesArray(node) {
     return node.children.reduce(function (nodes, child) { return __spreadArray(__spreadArray([], nodes, true), createNodesArray(child), true); }, [node]);
 }
 exports.createNodesArray = createNodesArray;
+;
 /**
  * creates connecting line between adjacent nodes
  * @param { TreeElementWithCoords } parentNode - node from which the line begins
@@ -76,6 +80,7 @@ function createPath(parentNode, childNode, pathStyle) {
     return { path: pathStyle(parentNodeX, parentNodeY, childNodeX, childNodeY), id: id };
 }
 exports.createPath = createPath;
+;
 /**
  * Creates array of connecting lines
  * @param {object} node - source object with coordinates
@@ -90,3 +95,4 @@ function createConnectingLinesArray(node, cellwidth, cellHeight, pathStyle) {
     return connectingLines;
 }
 exports.createConnectingLinesArray = createConnectingLinesArray;
+;

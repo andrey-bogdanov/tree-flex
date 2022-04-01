@@ -15,22 +15,22 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Tree = void 0;
+exports.TreeGraphFlex = void 0;
 var React = require("react");
-require("./tree.styles.css");
-var pathShapes_1 = require("./pathShapes");
-var treeBuildFunctions_1 = require("./treeBuildFunctions");
-var Tree = /** @class */ (function (_super) {
-    __extends(Tree, _super);
-    function Tree() {
+require("./tree-styles.css");
+var path_shapes_1 = require("./path-shapes");
+var tree_build_functions_1 = require("./tree-build-functions");
+var TreeGraphFlex = /** @class */ (function (_super) {
+    __extends(TreeGraphFlex, _super);
+    function TreeGraphFlex() {
         return _super !== null && _super.apply(this, arguments) || this;
     }
-    Tree.prototype.render = function () {
+    TreeGraphFlex.prototype.render = function () {
         var _a = this.props, nodeWidth = _a.nodeWidth, nodeHeight = _a.nodeHeight, data = _a.data, yOffset = _a.yOffset, xOffset = _a.xOffset, lineClassName = _a.lineClassName, content = _a.nodeContent;
-        var pathStyle = typeof this.props.pathShape == "function" ? this.props.pathShape : pathShapes_1.default[this.props.pathShape];
-        var dataTree = (0, treeBuildFunctions_1.processTree)(data, yOffset, xOffset, nodeWidth, nodeHeight);
-        var dataList = (0, treeBuildFunctions_1.createNodesArray)(dataTree);
-        var connectingLines = (0, treeBuildFunctions_1.createConnectingLinesArray)(dataTree, nodeWidth, nodeHeight, pathStyle);
+        var pathStyle = typeof this.props.pathShape == "function" ? this.props.pathShape : path_shapes_1.default[this.props.pathShape];
+        var dataTree = (0, tree_build_functions_1.processTree)(data, yOffset, xOffset, nodeWidth, nodeHeight);
+        var dataList = (0, tree_build_functions_1.createNodesArray)(dataTree);
+        var connectingLines = (0, tree_build_functions_1.createConnectingLinesArray)(dataTree, nodeWidth, nodeHeight, pathStyle);
         var _b = dataList.reduce(function (limits, node) { return ({
             width: Math.max(limits.width, node.x + node.width),
             height: Math.max(limits.height, node.y + node.height)
@@ -53,15 +53,15 @@ var Tree = /** @class */ (function (_super) {
     * @param {string} lineClassName - connecting lines className. Located in tree.style.css. By default "connectingLine".
     * @returns {HTMLElement} renders tree
     */
-    Tree.defaultProps = {
-        pathShape: pathShapes_1.default.bezier,
+    TreeGraphFlex.defaultProps = {
+        pathShape: path_shapes_1.default.bezier,
         nodeWidth: 100,
         nodeHeight: 50,
         lineClassName: "connectingLine",
         xOffset: 50,
         yOffset: 50,
     };
-    return Tree;
+    return TreeGraphFlex;
 }(React.Component));
-exports.Tree = Tree;
+exports.TreeGraphFlex = TreeGraphFlex;
 ;

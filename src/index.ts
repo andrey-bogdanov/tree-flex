@@ -1,1 +1,1 @@
-export * from "./components/tree-component/tree.component";
+export * from "./tree-graph-flex/tree-graph-flex";

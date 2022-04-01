@@ -1,18 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.straight = exports.staticRadiusRoundedAngles = exports.roundedAngles = exports.bezier = void 0;
-/**
- * calculates d attribute for path tag from two nodes coordinates.
- * @param x1 - starp point x
- * @param y1- starp point x
- * @param x2 - end point x
- * @param y2 - end point x
- * @returns { string } - d attribute for <path>
- */
-function bezier(x1, y1, x2, y2) {
-    return "M".concat(x1, " ").concat(y1, " C").concat((x1 + x2) / 2, ",").concat(y1, " ").concat((x1 + x2) / 2, ",").concat(y2, " ").concat(x2, ",").concat(y2);
-}
-exports.bezier = bezier;
+exports.straight = exports.staticRadiusRoundedAngles = exports.bezier = exports.roundedAngles = void 0;
 /**
 * calculates radius for angles arcs
 * @param x1 - start point x
@@ -26,6 +14,18 @@ function roundedAngles(x1, y1, x8, y8) {
     return staticRadiusRoundedAngles(x1, y1, x8, y8, radius);
 }
 exports.roundedAngles = roundedAngles;
+/**
+ * calculates d attribute for path tag from two nodes coordinates.
+ * @param x1 - starp point x
+ * @param y1 - starp point x
+ * @param x2 - end point x
+ * @param y2 - end point x
+ * @returns { string } - d attribute for <path>
+ */
+function bezier(x1, y1, x2, y2) {
+    return "M".concat(x1, " ").concat(y1, " C").concat((x1 + x2) / 2, ",").concat(y1, " ").concat((x1 + x2) / 2, ",").concat(y2, " ").concat(x2, ",").concat(y2);
+}
+exports.bezier = bezier;
 /**
  * calculates d attribute for path tag from two nodes coordinates.
  * @param x1 - start point x
@@ -54,7 +54,7 @@ exports.staticRadiusRoundedAngles = staticRadiusRoundedAngles;
 /**
 * calculates d attribute for path tag from two nodes coordinates.
 * @param x1 - starp point x
-* @param y1- starp point x
+* @param y1 - starp point x
 * @param x2 - end point x
 * @param y2 - end point x
 * @returns { string } - d attribute for <path>

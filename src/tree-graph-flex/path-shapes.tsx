@@ -1,18 +1,6 @@
 import { PathFunction, PathShape } from "./interfaces";
 
 /**
- * calculates d attribute for path tag from two nodes coordinates. 
- * @param x1 - starp point x
- * @param y1- starp point x
- * @param x2 - end point x
- * @param y2 - end point x
- * @returns { string } - d attribute for <path>
- */
-export function bezier(x1: number, y1: number, x2: number, y2: number): string {
-  return `M${x1} ${y1} C${(x1 + x2) / 2},${y1} ${(x1 + x2) / 2},${y2} ${x2},${y2}`;
-}
-
-/**
 * calculates radius for angles arcs
 * @param x1 - start point x
 * @param y1 - start point y
@@ -23,6 +11,18 @@ export function bezier(x1: number, y1: number, x2: number, y2: number): string {
 export function roundedAngles(x1: number, y1: number, x8: number, y8: number): string {
   const radius: number = Math.min(Math.abs(y1 - y8) / 3, Math.abs(x1 - x8) / 3)
   return staticRadiusRoundedAngles(x1, y1, x8, y8, radius)
+}
+
+/**
+ * calculates d attribute for path tag from two nodes coordinates. 
+ * @param x1 - starp point x
+ * @param y1 - starp point x
+ * @param x2 - end point x
+ * @param y2 - end point x
+ * @returns { string } - d attribute for <path>
+ */
+export function bezier(x1: number, y1: number, x2: number, y2: number): string {
+  return `M${x1} ${y1} C${(x1 + x2) / 2},${y1} ${(x1 + x2) / 2},${y2} ${x2},${y2}`;
 }
 
 /**
@@ -53,7 +53,7 @@ export function staticRadiusRoundedAngles(x1: number, y1: number, x8: number, y8
 /**
 * calculates d attribute for path tag from two nodes coordinates. 
 * @param x1 - starp point x
-* @param y1- starp point x
+* @param y1 - starp point x
 * @param x2 - end point x
 * @param y2 - end point x
 * @returns { string } - d attribute for <path>

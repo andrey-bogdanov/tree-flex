@@ -1,4 +1,4 @@
-import { bezier, roundedAngles, straight } from "../src/components/tree-component/pathShapes";
+import { bezier, roundedAngles, straight } from "../src/tree-graph-flex/path-shapes";
 
 describe("Path shape test", () => {
 

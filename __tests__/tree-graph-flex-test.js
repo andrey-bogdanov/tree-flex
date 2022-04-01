@@ -1,22 +1,22 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { dataLong, dataOne} from "../src/data";
+import { dataLong, dataOne } from "../src/data";
 import '@testing-library/jest-dom';
-import { Tree } from "../src/components/tree-component/tree.component";
+import { TreeGraphFlex } from "../src/tree-graph-flex/tree-graph-flex";
 
 describe("graph rendering tests", () => {
 
-  describe ("data contain 25 nodes", () => {
+  describe("data contain 25 nodes", () => {
 
-    const nodeContentMock = jest.fn((node) => 
+    const nodeContentMock = jest.fn((node) =>
     (<div id={node.id}>
-    <p>{node.id}</p> 
-    <p>{node.name}</p>
+      <p>{node.id}</p>
+      <p>{node.name}</p>
     </div>));
 
     function subject() {
       const root = document.createElement("div");
-      ReactDOM.render(<Tree data={dataLong} nodeContent={nodeContentMock} />, root);
+      ReactDOM.render(<TreeGraphFlex data={dataLong} nodeContent={nodeContentMock} />, root);
       return root;
     };
 
@@ -27,25 +27,25 @@ describe("graph rendering tests", () => {
       expect(nodeContentMock).toBeCalledTimes(nodeCount);
     });
 
-    test ("node called with params", () => {
+    test("node called with params", () => {
       subject();
-      expect(nodeContentMock).toHaveBeenLastCalledWith({"children": [], "height": 50, "id": "node23_1", "level": 3, "width": 100, "x": 450, "y": 1400});
+      expect(nodeContentMock).toHaveBeenLastCalledWith({ "children": [], "height": 50, "id": "node23_1", "level": 3, "width": 100, "x": 450, "y": 1400 });
       expect(nodeContentMock).toHaveBeenNthCalledWith(24, {
-        "children":  [{
-            "children": [],
-            "height": 50,
-            "id": "node23_1",
-            "level": 3,
-            "width": 100,
-            "x": 450,
-            "y": 1400
-            },],
+        "children": [{
+          "children": [],
           "height": 50,
-          "id": "node23",
-          "level": 2,
+          "id": "node23_1",
+          "level": 3,
           "width": 100,
-          "x": 300,
-          "y": 1400,
+          "x": 450,
+          "y": 1400
+        },],
+        "height": 50,
+        "id": "node23",
+        "level": 2,
+        "width": 100,
+        "x": 300,
+        "y": 1400,
       });
     });
 
@@ -58,17 +58,17 @@ describe("graph rendering tests", () => {
     });
   });
 
-  describe ("data have one node", () => {
+  describe("data have one node", () => {
 
-    const nodeContentMock = jest.fn((node) => 
-    (<p> {node.id} {node.children}</p>));
+    const nodeContentMock = jest.fn((node) =>
+      (<p> {node.id} {node.children}</p>));
 
     function subject() {
       const root = document.createElement("div");
-      ReactDOM.render(<Tree data={dataOne} nodeContent={nodeContentMock} />, root);
+      ReactDOM.render(<TreeGraphFlex data={dataOne} nodeContent={nodeContentMock} />, root);
       return root;
     };
-    
+
     test("node called times", () => {
       subject();
       expect(nodeContentMock).toBeCalledTimes(1);
@@ -88,14 +88,14 @@ describe("graph rendering tests", () => {
 
 const spyBezier = jest.fn(() => "bezierResult");
 
-describe ("path rendering tests", ()=> {
+describe("path rendering tests", () => {
 
-  const nodeContentMock = jest.fn(() => 
-  (<p></p>));
-  
+  const nodeContentMock = jest.fn(() =>
+    (<p></p>));
+
   function subject(path) {
     const root = document.createElement("div");
-    ReactDOM.render(<Tree data={dataLong} nodeContent={nodeContentMock} pathShape={path}/>, root)
+    ReactDOM.render(<TreeGraphFlex data={dataLong} nodeContent={nodeContentMock} pathShape={path} />, root)
     return (root);
   };
 
