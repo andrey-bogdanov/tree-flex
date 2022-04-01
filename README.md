@@ -2,7 +2,7 @@
 
 This is simple component which renders data as a tree using svg.
 
-### [Example](https://andrey-bogdanov.github.io/treeflex-ed/example/build)
+### [Example](https://andrey-bogdanov.github.io/tree-graph-flex-docs/example/build)
 
 ### Installing
 
@@ -87,6 +87,4 @@ const data = {
 | `lineClassName` | string             | no        | connectingLine | ClassName, defines style of curve shape, which connects nodes |
 
 
-[TypeDoc documentation](https://andrey-bogdanov.github.io/treeflex-ed/docs/index.html)
-
-
+[TypeDoc documentation](https://andrey-bogdanov.github.io/tree-graph-flex-docs/docs/index.html)
