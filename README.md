@@ -15,7 +15,7 @@ import  { TreeGraphFlex } from 'tree-graph-flex';
 
 ReactDOM.render(
  <React.StrictMode>
-   <Tree data={data}
+   <TreeGraphFlex data={data}
      nodeContent={ node => <div> {node.subject} </div> }
      yOffset={15}
      xOffset={ level => 30 + level * 10 }
