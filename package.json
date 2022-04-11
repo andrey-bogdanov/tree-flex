@@ -1,6 +1,6 @@
 {
   "name": "tree-graph-flex",
-  "version": "1.0.23",
+  "version": "1.0.24",
   "description": "Tree builder, with a lot of options",
   "main": "dist/index.js",
   "repository": {
@@ -34,7 +34,7 @@
   },
   "scripts": {
     "build": "tsc && cp src/tree-graph-flex/tree-styles.css dist/tree-graph-flex",
-    "test": "jest --watchAll",
+    "test": "jest --watchAll --coverage",
     "typedoc": "npx typedoc"
   },
   "dependencies": {

@@ -18,6 +18,7 @@ export interface TreeProps {
     pathShape?: string | PathFunction;
     nodeContent: (node: TreeElementWithCoords) => React.ReactElement;
     lineClassName?: string;
+    nodeBoxClassName?: string;
 }
 /**
  * @interface TreeElementWithCoords

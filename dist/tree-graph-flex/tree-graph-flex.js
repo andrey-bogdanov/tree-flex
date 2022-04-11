@@ -26,7 +26,7 @@ var TreeGraphFlex = /** @class */ (function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     TreeGraphFlex.prototype.render = function () {
-        var _a = this.props, nodeWidth = _a.nodeWidth, nodeHeight = _a.nodeHeight, data = _a.data, yOffset = _a.yOffset, xOffset = _a.xOffset, lineClassName = _a.lineClassName, content = _a.nodeContent;
+        var _a = this.props, nodeWidth = _a.nodeWidth, nodeHeight = _a.nodeHeight, data = _a.data, yOffset = _a.yOffset, xOffset = _a.xOffset, lineClassName = _a.lineClassName, nodeBoxClassName = _a.nodeBoxClassName, content = _a.nodeContent;
         var pathStyle = typeof this.props.pathShape == "function" ? this.props.pathShape : path_shapes_1.default[this.props.pathShape];
         var dataTree = (0, tree_build_functions_1.processTree)(data, yOffset, xOffset, nodeWidth, nodeHeight);
         var dataList = (0, tree_build_functions_1.createNodesArray)(dataTree);
@@ -37,7 +37,7 @@ var TreeGraphFlex = /** @class */ (function (_super) {
         }); }, { width: 0, height: 0 }), width = _b.width, height = _b.height;
         return (React.createElement("div", null,
             React.createElement("div", { className: "root", style: { width: width, height: height } },
-                React.createElement("div", null, dataList.map(function (node) { return (React.createElement("div", { style: { height: nodeHeight, width: nodeWidth, top: node.y, left: node.x }, className: "nodeBox", key: node.id }, content(node))); })),
+                React.createElement("div", null, dataList.map(function (node) { return (React.createElement("div", { style: { height: nodeHeight, width: nodeWidth, top: node.y, left: node.x }, className: nodeBoxClassName, key: node.id }, content(node))); })),
                 React.createElement("svg", { width: width, height: height }, connectingLines.map(function (path) { return (React.createElement("path", { d: path.path, className: lineClassName, key: path.id })); })))));
     };
     ;
@@ -45,12 +45,14 @@ var TreeGraphFlex = /** @class */ (function (_super) {
     * @class Tree
     * builds tree graph from user's object. Graph exist is rectangles(nodes) and connecting lines.
     * @param {TreeElement} data - source user's object.
-    * @param {number} nodeWidth - width of the rectangle(node) in pixels, that user's content is placed in. Not mandatory. 100 by default.
-    * @param {number} nodeHeight - height of the node in pixels. 50 by default.
-    * @param {number | function} xOffset -  x distance between adjacent two nodes. By default 50 pixels. Also, it may be a custom function.
-    * @param {PathShape | PathFunction} pathShape - funcion, calculates svg lines between two nodes. There are three offered functions. bezier by default. Also, it may be a custom function.
-    * @param {function} nodeContent - user's function, returns HTML element, wich will be placed into node rectangle.
-    * @param {string} lineClassName - connecting lines className. Located in tree.style.css. By default "connectingLine".
+    * @param {number} nodeWidth - width of the rectangle(node) in pixels, that user's content is placed in. Not mandatory. 100 pixels by default.
+    * @param {number} nodeHeight - height of the node in pixels. 50 pixels by default.
+    * @param {number | function} xOffset -  distance by x between adjacent two nodes. By default 50 pixels. Also, it may be a custom function.
+    * @param {number} yOffset -  distance by y between adjacent two nodes. By default 50 pixels.
+    * @param {PathShape | PathFunction} pathShape - funcion, calculates svg lines between two nodes. There are three offered functions. "bezier" by default. Also, it may be a custom function.
+    * @param {function} nodeContent - user's function, returns HTML element, which will be placed into node box.
+    * @param {string} lineClassName - connecting lines className. Locates in tree.style.css. By default "connectingLine".
+    * @param {string} nodeBoxClassName - className, defines style of node view. Locates in tree.style.css. By default "nodeBox".
     * @returns {HTMLElement} renders tree
     */
     TreeGraphFlex.defaultProps = {
@@ -58,6 +60,7 @@ var TreeGraphFlex = /** @class */ (function (_super) {
         nodeWidth: 100,
         nodeHeight: 50,
         lineClassName: "connectingLine",
+        nodeBoxClassName: "nodeBox",
         xOffset: 50,
         yOffset: 50,
     };

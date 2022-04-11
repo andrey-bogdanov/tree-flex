@@ -9,7 +9,7 @@ export interface TreeElement {
 /**
  * @interface TreeProps 
  */
-export interface TreeProps { 
+export interface TreeProps {
   data: TreeElement;
   nodeWidth?: number;
   nodeHeight?: number;
@@ -18,6 +18,7 @@ export interface TreeProps {
   pathShape?: string | PathFunction;
   nodeContent: (node: TreeElementWithCoords) => React.ReactElement;
   lineClassName?: string;
+  nodeBoxClassName?: string;
 };
 
 /**
