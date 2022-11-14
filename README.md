@@ -95,7 +95,7 @@ props description:
 
 `xOffset`, `yOffset` - distance between adjacent nodes. xOffset may be a function with `level` argument, where level - tree branches level;
 
-`pathShape` - there are three preset functions: `bezier`, `straight` and `roundedAngles`. Functions returns d attribute for tag `path` as string. Instead, you can pass your function, which accepts following parameters: start x, start y, end x, end y. Corner rounding in `roundedAngles` function calculates automatically, and it depends on distance between adjacent nodes. As bonus, there is another one preset function - `staticRadiusRoundedAngles`, which accepts five arguments. Fifth argument - corner rounding radius.
+`pathShape` - there are three preset functions: `bezier`, `straight` and `roundedAngles`. Functions return d attribute for tag `path` as string. Instead, you can pass your function, which accepts following parameters: start x, start y, end x, end y. Corner rounding in `roundedAngles` function calculates automatically, and it depends on distance between adjacent nodes. As bonus, there is another one preset function - `staticRadiusRoundedAngles`, which accepts five arguments. Fifth argument - corner rounding radius.
 
 `nodeContent` - any HTML element or react component. 
 

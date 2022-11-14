@@ -32,7 +32,7 @@ export declare type TreeElementWithCoords = Omit<TreeElement, "children"> & {
     children: TreeElementWithCoords[];
 };
 /**
- * @interface TreeElement
+ * @interface PathFunction
  */
 export declare type PathFunction = (x1: number, y1: number, x2: number, y2: number) => string;
 /**

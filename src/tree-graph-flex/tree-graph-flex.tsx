@@ -55,7 +55,6 @@ export class TreeGraphFlex extends React.Component<TreeProps> {
     const pathStyle: PathFunction = typeof this.props.pathShape == "function" ? this.props.pathShape : pathShapes[this.props.pathShape];
     const dataTree: TreeElementWithCoords = processTree(data, yOffset, xOffset, nodeWidth, nodeHeight);
     const dataList: TreeElementWithCoords[] = createNodesArray(dataTree);
-    const connectingLines: Path[] = createConnectingLinesArray(dataTree, nodeWidth, nodeHeight, pathStyle);
     const { width, height }: { width: number; height: number } = dataList.reduce(
       (limits, node) => ({
         width: Math.max(limits.width, node.x + node.width),
@@ -64,13 +63,22 @@ export class TreeGraphFlex extends React.Component<TreeProps> {
       { width: 0, height: 0 }
     );
 
+    const connectingLines: Path[] = createConnectingLinesArray(dataTree, nodeWidth, nodeHeight, pathStyle, width);
+
+    function reversX(node: TreeElementWithCoords): TreeElementWithCoords {
+      return {
+        ...node,
+        x: width - node.x - node.width
+      }
+    }
+
     return (
       <div>
         <div className="root" style={{ width: width, height: height }}>
           <div>
             {dataList.map(node => (
               <div
-                style={{ height: nodeHeight, width: nodeWidth, top: node.y, left: node.x }}
+                style={{ height: nodeHeight, width: nodeWidth, top: node.y, left: reversX(node).x }}
                 className={nodeBoxClassName}
                 key={node.id}
               >

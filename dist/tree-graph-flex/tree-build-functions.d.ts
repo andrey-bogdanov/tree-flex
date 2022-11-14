@@ -22,7 +22,7 @@ export declare function createNodesArray(node: TreeElementWithCoords): TreeEleme
  * @param { enum | function} pathStyle - function which define line shape
  * @returns attribute d for <path> tsg
  */
-export declare function createPath(parentNode: TreeElementWithCoords, childNode: TreeElementWithCoords, pathStyle: PathFunction): Path;
+export declare function createPath(parentNode: TreeElementWithCoords, childNode: TreeElementWithCoords, pathStyle: PathFunction, width: number): Path;
 /**
  * Creates array of connecting lines
  * @param {object} node - source object with coordinates
@@ -31,4 +31,4 @@ export declare function createPath(parentNode: TreeElementWithCoords, childNode:
  * @param {function} pathStyle - path style function
  * @returns array of objects with line id and b attribute of <path> tag
  */
-export declare function createConnectingLinesArray(node: TreeElementWithCoords, cellwidth: number, cellHeight: number, pathStyle: PathFunction): Path[];
+export declare function createConnectingLinesArray(node: TreeElementWithCoords, cellwidth: number, cellHeight: number, pathStyle: PathFunction, width: number): Path[];

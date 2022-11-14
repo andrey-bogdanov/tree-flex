@@ -14,6 +14,17 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+var __assign = (this && this.__assign) || function () {
+    __assign = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+            s = arguments[i];
+            for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p))
+                t[p] = s[p];
+        }
+        return t;
+    };
+    return __assign.apply(this, arguments);
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.TreeGraphFlex = void 0;
 var React = require("react");
@@ -30,14 +41,17 @@ var TreeGraphFlex = /** @class */ (function (_super) {
         var pathStyle = typeof this.props.pathShape == "function" ? this.props.pathShape : path_shapes_1.default[this.props.pathShape];
         var dataTree = (0, tree_build_functions_1.processTree)(data, yOffset, xOffset, nodeWidth, nodeHeight);
         var dataList = (0, tree_build_functions_1.createNodesArray)(dataTree);
-        var connectingLines = (0, tree_build_functions_1.createConnectingLinesArray)(dataTree, nodeWidth, nodeHeight, pathStyle);
         var _b = dataList.reduce(function (limits, node) { return ({
             width: Math.max(limits.width, node.x + node.width),
             height: Math.max(limits.height, node.y + node.height)
         }); }, { width: 0, height: 0 }), width = _b.width, height = _b.height;
+        var connectingLines = (0, tree_build_functions_1.createConnectingLinesArray)(dataTree, nodeWidth, nodeHeight, pathStyle, width);
+        function reversX(node) {
+            return __assign(__assign({}, node), { x: width - node.x - node.width });
+        }
         return (React.createElement("div", null,
             React.createElement("div", { className: "root", style: { width: width, height: height } },
-                React.createElement("div", null, dataList.map(function (node) { return (React.createElement("div", { style: { height: nodeHeight, width: nodeWidth, top: node.y, left: node.x }, className: nodeBoxClassName, key: node.id }, content(node))); })),
+                React.createElement("div", null, dataList.map(function (node) { return (React.createElement("div", { style: { height: nodeHeight, width: nodeWidth, top: node.y, left: reversX(node).x }, className: nodeBoxClassName, key: node.id }, content(node))); })),
                 React.createElement("svg", { width: width, height: height }, connectingLines.map(function (path) { return (React.createElement("path", { d: path.path, className: lineClassName, key: path.id })); })))));
     };
     ;

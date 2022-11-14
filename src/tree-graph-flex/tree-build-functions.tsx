@@ -22,19 +22,26 @@ export function processTree(
   cellwidth: number,
   cellHeight: number
 ): TreeElementWithCoords {
+
   let maxY: number = 0;
+
   function calculateCoords(treeElement: TreeElement, level: number = 0): TreeElementWithCoords {
+
     const children: TreeElementWithCoords[] = treeElement.children.map((child: TreeElement) =>
       calculateCoords(child, level + 1)
     );
+
     let y: number;
+
     if (children.length !== 0) {
       y = Math.round((children[0].y + children[children.length - 1].y) / 2);
     } else {
       y = maxY;
       maxY = maxY + yOffset + cellHeight;
     };
+
     const curentXOffset: number = typeof xOffset === "number" ? xOffset : xOffset(level);
+
     return {
       ...treeElement,
       x: level * (curentXOffset + cellwidth),
@@ -67,11 +74,13 @@ export function createNodesArray(node: TreeElementWithCoords): TreeElementWithCo
 export function createPath(
   parentNode: TreeElementWithCoords,
   childNode: TreeElementWithCoords,
-  pathStyle: PathFunction
+  pathStyle: PathFunction,
+  width: number,
 ): Path {
-  const parentNodeX: number = parentNode.x + parentNode.width;
+
+  const parentNodeX: number = width - parentNode.x - parentNode.width;
   const parentNodeY: number = parentNode.y + parentNode.height / 2;
-  const childNodeX: number = childNode.x;
+  const childNodeX: number = width - childNode.x;
   const childNodeY: number = childNode.y + childNode.height / 2;
   const id: string = parentNode.id + "--" + childNode.id;
   return { path: pathStyle(parentNodeX, parentNodeY, childNodeX, childNodeY), id: id };
@@ -89,11 +98,12 @@ export function createConnectingLinesArray(
   node: TreeElementWithCoords,
   cellwidth: number,
   cellHeight: number,
-  pathStyle: PathFunction
+  pathStyle: PathFunction,
+  width: number
 ): Path[] {
-  const linesToChildren: Path[] = node.children.map(child => createPath(node, child, pathStyle));
+  const linesToChildren: Path[] = node.children.map(child => createPath(node, child, pathStyle, width));
   const connectingLines: Path[] = node.children.reduce(
-    (lines, node) => [...lines, ...createConnectingLinesArray(node, cellwidth, cellHeight, pathStyle)],
+    (lines, node) => [...lines, ...createConnectingLinesArray(node, cellwidth, cellHeight, pathStyle, width)],
     linesToChildren
   );
   return connectingLines;
