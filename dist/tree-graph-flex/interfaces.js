@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PathShape = void 0;
+exports.Direction = exports.PathShape = void 0;
 ;
 ;
 /**
@@ -13,4 +13,13 @@ var PathShape;
     PathShape["RoundedAngles"] = "roundedAngles";
 })(PathShape = exports.PathShape || (exports.PathShape = {}));
 ;
+;
+/**
+ * @interface Direction
+ */
+var Direction;
+(function (Direction) {
+    Direction["Forward"] = "forward";
+    Direction["Reverse"] = "reverse";
+})(Direction = exports.Direction || (exports.Direction = {}));
 ;

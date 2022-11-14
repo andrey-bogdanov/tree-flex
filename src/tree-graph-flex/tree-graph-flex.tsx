@@ -11,7 +11,8 @@ import {
   PathFunction,
   TreeElementWithCoords,
   TreeProps,
-  Path
+  Path,
+  Direction
 }
   from "./interfaces";
 
@@ -28,9 +29,10 @@ export class TreeGraphFlex extends React.Component<TreeProps> {
   * @param {function} nodeContent - user's function, returns HTML element, which will be placed into node box.
   * @param {string} lineClassName - connecting lines className. Locates in tree.style.css. By default "connectingLine".
   * @param {string} nodeBoxClassName - className, defines style of node view. Locates in tree.style.css. By default "nodeBox".
+  * @param {string} direction - defines diagram direction. Forward - root node at left, reverse - at right.
   * @returns {HTMLElement} renders tree
   */
-  static defaultProps: Pick<TreeProps, "pathShape" | "nodeWidth" | "nodeHeight" | "lineClassName" | "xOffset" | "yOffset" | "nodeBoxClassName"> = {
+  static defaultProps: Pick<TreeProps, "pathShape" | "nodeWidth" | "nodeHeight" | "lineClassName" | "xOffset" | "yOffset" | "nodeBoxClassName" | "direction"> = {
     pathShape: pathShapes.bezier,
     nodeWidth: 100,
     nodeHeight: 50,
@@ -38,6 +40,7 @@ export class TreeGraphFlex extends React.Component<TreeProps> {
     nodeBoxClassName: "nodeBox",
     xOffset: 50,
     yOffset: 50,
+    direction: Direction.Forward,
   };
 
   render(): React.ReactElement {
@@ -49,8 +52,11 @@ export class TreeGraphFlex extends React.Component<TreeProps> {
       xOffset,
       lineClassName,
       nodeBoxClassName,
-      nodeContent: content
+      nodeContent: content,
+      direction
     }: TreeProps = this.props;
+
+
 
     const pathStyle: PathFunction = typeof this.props.pathShape == "function" ? this.props.pathShape : pathShapes[this.props.pathShape];
     const dataTree: TreeElementWithCoords = processTree(data, yOffset, xOffset, nodeWidth, nodeHeight);
@@ -63,12 +69,17 @@ export class TreeGraphFlex extends React.Component<TreeProps> {
       { width: 0, height: 0 }
     );
 
-    const connectingLines: Path[] = createConnectingLinesArray(dataTree, nodeWidth, nodeHeight, pathStyle, width);
+    const connectingLines: Path[] = createConnectingLinesArray(dataTree, nodeWidth, nodeHeight, pathStyle, width, direction);
+    console.log(direction, "direction")
 
-    function reversX(node: TreeElementWithCoords): TreeElementWithCoords {
-      return {
-        ...node,
-        x: width - node.x - node.width
+    function defineDirection(node: TreeElementWithCoords): TreeElementWithCoords {
+      if (direction === "forward") {
+        return node
+      } else {
+        return {
+          ...node,
+          x: width - node.x - node.width
+        }
       }
     }
 
@@ -78,7 +89,7 @@ export class TreeGraphFlex extends React.Component<TreeProps> {
           <div>
             {dataList.map(node => (
               <div
-                style={{ height: nodeHeight, width: nodeWidth, top: node.y, left: reversX(node).x }}
+                style={{ height: nodeHeight, width: nodeWidth, top: node.y, left: defineDirection(node).x }}
                 className={nodeBoxClassName}
                 key={node.id}
               >

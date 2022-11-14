@@ -1,3 +1,4 @@
+import { Direction } from "./interfaces";
 import {
   TreeElement,
   PathFunction,
@@ -76,11 +77,12 @@ export function createPath(
   childNode: TreeElementWithCoords,
   pathStyle: PathFunction,
   width: number,
+  direction: Direction,
 ): Path {
 
-  const parentNodeX: number = width - parentNode.x - parentNode.width;
+  const parentNodeX: number = (direction === "forward" ? parentNode.x + parentNode.width : width - parentNode.x - parentNode.width);
   const parentNodeY: number = parentNode.y + parentNode.height / 2;
-  const childNodeX: number = width - childNode.x;
+  const childNodeX: number = (direction === "forward" ? childNode.x : width - childNode.x);
   const childNodeY: number = childNode.y + childNode.height / 2;
   const id: string = parentNode.id + "--" + childNode.id;
   return { path: pathStyle(parentNodeX, parentNodeY, childNodeX, childNodeY), id: id };
@@ -99,11 +101,12 @@ export function createConnectingLinesArray(
   cellwidth: number,
   cellHeight: number,
   pathStyle: PathFunction,
-  width: number
+  width: number,
+  direction: Direction
 ): Path[] {
-  const linesToChildren: Path[] = node.children.map(child => createPath(node, child, pathStyle, width));
+  const linesToChildren: Path[] = node.children.map(child => createPath(node, child, pathStyle, width, direction));
   const connectingLines: Path[] = node.children.reduce(
-    (lines, node) => [...lines, ...createConnectingLinesArray(node, cellwidth, cellHeight, pathStyle, width)],
+    (lines, node) => [...lines, ...createConnectingLinesArray(node, cellwidth, cellHeight, pathStyle, width, direction)],
     linesToChildren
   );
   return connectingLines;
