@@ -71,10 +71,10 @@ exports.createNodesArray = createNodesArray;
  * @param { enum | function} pathStyle - function which define line shape
  * @returns attribute d for <path> tsg
  */
-function createPath(parentNode, childNode, pathStyle) {
-    var parentNodeX = parentNode.x + parentNode.width;
+function createPath(parentNode, childNode, pathStyle, width, direction) {
+    var parentNodeX = (direction === "forward" ? parentNode.x + parentNode.width : width - parentNode.x - parentNode.width);
     var parentNodeY = parentNode.y + parentNode.height / 2;
-    var childNodeX = childNode.x;
+    var childNodeX = (direction === "forward" ? childNode.x : width - childNode.x);
     var childNodeY = childNode.y + childNode.height / 2;
     var id = parentNode.id + "--" + childNode.id;
     return { path: pathStyle(parentNodeX, parentNodeY, childNodeX, childNodeY), id: id };
@@ -89,9 +89,9 @@ exports.createPath = createPath;
  * @param {function} pathStyle - path style function
  * @returns array of objects with line id and b attribute of <path> tag
  */
-function createConnectingLinesArray(node, cellwidth, cellHeight, pathStyle) {
-    var linesToChildren = node.children.map(function (child) { return createPath(node, child, pathStyle); });
-    var connectingLines = node.children.reduce(function (lines, node) { return __spreadArray(__spreadArray([], lines, true), createConnectingLinesArray(node, cellwidth, cellHeight, pathStyle), true); }, linesToChildren);
+function createConnectingLinesArray(node, cellwidth, cellHeight, pathStyle, width, direction) {
+    var linesToChildren = node.children.map(function (child) { return createPath(node, child, pathStyle, width, direction); });
+    var connectingLines = node.children.reduce(function (lines, node) { return __spreadArray(__spreadArray([], lines, true), createConnectingLinesArray(node, cellwidth, cellHeight, pathStyle, width, direction), true); }, linesToChildren);
     return connectingLines;
 }
 exports.createConnectingLinesArray = createConnectingLinesArray;

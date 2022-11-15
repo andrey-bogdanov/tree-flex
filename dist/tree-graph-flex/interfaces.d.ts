@@ -19,6 +19,7 @@ export interface TreeProps {
     nodeContent: (node: TreeElementWithCoords) => React.ReactElement;
     lineClassName?: string;
     nodeBoxClassName?: string;
+    direction: Direction;
 }
 /**
  * @interface TreeElementWithCoords
@@ -32,7 +33,7 @@ export declare type TreeElementWithCoords = Omit<TreeElement, "children"> & {
     children: TreeElementWithCoords[];
 };
 /**
- * @interface TreeElement
+ * @interface PathFunction
  */
 export declare type PathFunction = (x1: number, y1: number, x2: number, y2: number) => string;
 /**
@@ -49,4 +50,11 @@ export declare enum PathShape {
 export interface Path {
     id: string;
     path: string;
+}
+/**
+ * @interface Direction
+ */
+export declare enum Direction {
+    Forward = "forward",
+    Reverse = "reverse"
 }

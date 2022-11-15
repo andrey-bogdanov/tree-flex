@@ -77,17 +77,18 @@ const data = {
 
 ### Component props
 
-| Property           | Type               | Mandatory | Default          | Description                                                   |
-| :----------------- | :----------------- | :-------- | :--------------- | :------------------------------------------------------------ |
-| `data`             | object             | yes       | no               | The data to be rendered as a tree                             |
-| `nodeWidth`        | number             | no        | 100              | Width node container                                          |
-| `nodeHeight`       | number             | no        | 50               | Height node container                                         |
-| `xOffset`          | number or function | no        | 50               | Distance between adjacent nodes by x                          |
-| `yOffset`          | number             | no        | 50               | Distance between adjacent nodes by y                          |
-| `pathShape`        | enum or function   | no        | “bezier”         | Defines curve shape, which connects nodes                     |
-| `nodeContent`      | function           | yes       | no               | Node box content. Html element                                |
-| `lineClassName`    | string             | no        | "connectingLine" | ClassName, defines style of curve shape, which connects nodes |
-| `nodeBoxClassName` | string             | no        | "nodeBox"        | ClassName, defines style of node view                         |
+| Property           | Type               | Mandatory | Default          | Description                                                                                     |
+| :----------------- | :----------------- | :-------- | :--------------- | :---------------------------------------------------------------------------------------------- |
+| `data`             | object             | yes       | no               | The data to be rendered as a tree                                                               |
+| `nodeWidth`        | number             | no        | 100              | Width node container                                                                            |
+| `nodeHeight`       | number             | no        | 50               | Height node container                                                                           |
+| `xOffset`          | number or function | no        | 50               | Distance between adjacent nodes by x                                                            |
+| `yOffset`          | number             | no        | 50               | Distance between adjacent nodes by y                                                            |
+| `pathShape`        | enum or function   | no        | “bezier”         | Defines curve shape, which connects nodes                                                       |
+| `nodeContent`      | function           | yes       | no               | Node box content. Html element                                                                  |
+| `lineClassName`    | string             | no        | "connectingLine" | ClassName, defines style of curve shape, which connects nodes                                   |
+| `nodeBoxClassName` | string             | no        | "nodeBox"        | ClassName, defines style of node view                                                           |
+| `direction`        | enum               | no        | "forward"        | defines building diagram order. If "forward" - root element at left side, "reverse" - at right. |
 
 props description:
 
@@ -95,9 +96,11 @@ props description:
 
 `xOffset`, `yOffset` - distance between adjacent nodes. xOffset may be a function with `level` argument, where level - tree branches level;
 
-`pathShape` - there are three preset functions: `bezier`, `straight` and `roundedAngles`. Functions returns d attribute for tag `path` as string. Instead, you can pass your function, which accepts following parameters: start x, start y, end x, end y. Corner rounding in `roundedAngles` function calculates automatically, and it depends on distance between adjacent nodes. As bonus, there is another one preset function - `staticRadiusRoundedAngles`, which accepts five arguments. Fifth argument - corner rounding radius.
+`pathShape` - there are three preset functions: `bezier`, `straight` and `roundedAngles`. Functions return d attribute for tag `path` as string. Instead, you can pass your function, which accepts following parameters: start x, start y, end x, end y. Corner rounding in `roundedAngles` function calculates automatically, and it depends on distance between adjacent nodes. As bonus, there is another one preset function - `staticRadiusRoundedAngles`, which accepts five arguments. Fifth argument - corner rounding radius.
 
-`nodeContent` - any HTML element or react component. 
+`nodeContent` - any HTML element or react component.
+
+`direction` - 
 
 ---
 

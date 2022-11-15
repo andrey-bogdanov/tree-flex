@@ -14,8 +14,9 @@ export declare class TreeGraphFlex extends React.Component<TreeProps> {
     * @param {function} nodeContent - user's function, returns HTML element, which will be placed into node box.
     * @param {string} lineClassName - connecting lines className. Locates in tree.style.css. By default "connectingLine".
     * @param {string} nodeBoxClassName - className, defines style of node view. Locates in tree.style.css. By default "nodeBox".
+    * @param {string} direction - defines diagram direction. Forward - root node at left, reverse - at right.
     * @returns {HTMLElement} renders tree
     */
-    static defaultProps: Pick<TreeProps, "pathShape" | "nodeWidth" | "nodeHeight" | "lineClassName" | "xOffset" | "yOffset" | "nodeBoxClassName">;
+    static defaultProps: Pick<TreeProps, "pathShape" | "nodeWidth" | "nodeHeight" | "lineClassName" | "xOffset" | "yOffset" | "nodeBoxClassName" | "direction">;
     render(): React.ReactElement;
 }
