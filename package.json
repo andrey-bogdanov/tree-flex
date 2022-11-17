@@ -1,6 +1,6 @@
 {
   "name": "tree-graph-flex",
-  "version": "1.0.24",
+  "version": "1.0.25",
   "description": "Tree builder, with a lot of options",
   "main": "dist/index.js",
   "repository": {
@@ -41,6 +41,7 @@
     "@babel/core": "^7.16.12",
     "@babel/preset-env": "^7.16.11",
     "@testing-library/user-event": "^13.5.0",
+    "json-pretty-html": "^1.1.6",
     "node-sass": "^7.0.1",
     "ts-jest": "^27.1.3"
   },

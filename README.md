@@ -25,6 +25,7 @@ ReactDOM.render(
      pathShape={"bezier"}
      lineClassName={"connectingLines"}
      nodeBoxClassName={"nodeBox"}
+     direction={"forward"}
    />
  </React.StrictMode>,
  document.getElementById('root')
@@ -100,7 +101,7 @@ props description:
 
 `nodeContent` - any HTML element or react component.
 
-`direction` - 
+`direction` - diagram order. If "forward" - root element at left side, "reverse" - at right. 
 
 ---
 

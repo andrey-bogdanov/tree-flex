@@ -5,16 +5,14 @@ import {
   processTree,
   createNodesArray,
   createConnectingLinesArray,
-}
-  from "./tree-build-functions";
+} from "./tree-build-functions";
 import {
   PathFunction,
   TreeElementWithCoords,
   TreeProps,
   Path,
   Direction
-}
-  from "./interfaces";
+} from "./interfaces";
 
 export class TreeGraphFlex extends React.Component<TreeProps> {
   /**
@@ -55,8 +53,6 @@ export class TreeGraphFlex extends React.Component<TreeProps> {
       nodeContent: content,
       direction
     }: TreeProps = this.props;
-
-
 
     const pathStyle: PathFunction = typeof this.props.pathShape == "function" ? this.props.pathShape : pathShapes[this.props.pathShape];
     const dataTree: TreeElementWithCoords = processTree(data, yOffset, xOffset, nodeWidth, nodeHeight);
